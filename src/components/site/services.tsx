@@ -27,12 +27,7 @@ export function Services() {
         {/* Real Estate Services */}
         <div className="mt-14">
           <Reveal>
-            <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-soft-blue text-accent-blue">
-                <DynamicIcon name="Home" className="h-4.5 w-4.5" />
-              </span>
-              <h3 className="text-lg font-bold text-navy">Real Estate Services</h3>
-            </div>
+            <h3 className="text-2xl font-bold text-navy sm:text-3xl">Real Estate Services</h3>
           </Reveal>
           <Stagger className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
             {realEstate.map((service) => (
@@ -46,12 +41,7 @@ export function Services() {
         {/* Construction Services */}
         <div className="mt-16">
           <Reveal>
-            <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-soft-blue text-accent-blue">
-                <DynamicIcon name="HardHat" className="h-4.5 w-4.5" />
-              </span>
-              <h3 className="text-lg font-bold text-navy">Construction Services</h3>
-            </div>
+            <h3 className="text-2xl font-bold text-navy sm:text-3xl">Construction Services</h3>
           </Reveal>
           <Stagger className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
             {construction.map((service) => (

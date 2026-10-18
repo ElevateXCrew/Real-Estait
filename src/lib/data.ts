@@ -98,11 +98,11 @@ export const CTA_IMAGE = IMG.construction[3];
 
 /* ---------- Company contact info ---------- */
 export const CONTACT_INFO: ContactInfo = {
-  company: "Meridian Group",
+  company: "TS Estate & Builders",
   tagline:
     "Real estate, construction, architecture, and property development — under one trusted roof.",
   phone: "+1 (415) 555-0142",
-  email: "hello@meridiangroup.com",
+  email: "hello@tsestatebuilders.com",
   address: "210 Harbor View Avenue, Suite 1100, San Francisco, CA 94107",
   hours: "Monday – Saturday: 9:00 AM – 7:00 PM",
   social: [
@@ -813,7 +813,7 @@ export const PROPERTIES: Property[] = [
       name: "Daniel Mercer",
       role: "Senior Property Advisor",
       phone: "+1 (415) 555-0188",
-      email: "daniel@meridiangroup.com",
+      email: "daniel@tsestatebuilders.com",
       initials: "DM",
     },
     advantages: [
@@ -922,7 +922,7 @@ export const PROPERTIES: Property[] = [
       name: "Sofia Lindgren",
       role: "Residential Leasing Specialist",
       phone: "+1 (415) 555-0193",
-      email: "sofia@meridiangroup.com",
+      email: "sofia@tsestatebuilders.com",
       initials: "SL",
     },
     advantages: [
@@ -1030,7 +1030,7 @@ export const PROPERTIES: Property[] = [
       name: "Daniel Mercer",
       role: "Senior Property Advisor",
       phone: "+1 (415) 555-0188",
-      email: "daniel@meridiangroup.com",
+      email: "daniel@tsestatebuilders.com",
       initials: "DM",
     },
     advantages: [
@@ -1139,7 +1139,7 @@ export const PROPERTIES: Property[] = [
       name: "Sofia Lindgren",
       role: "Residential Leasing Specialist",
       phone: "+1 (415) 555-0193",
-      email: "sofia@meridiangroup.com",
+      email: "sofia@tsestatebuilders.com",
       initials: "SL",
     },
     advantages: [
@@ -1245,7 +1245,7 @@ export const PROPERTIES: Property[] = [
       name: "Sofia Lindgren",
       role: "Residential Leasing Specialist",
       phone: "+1 (415) 555-0193",
-      email: "sofia@meridiangroup.com",
+      email: "sofia@tsestatebuilders.com",
       initials: "SL",
     },
     advantages: [
@@ -1351,7 +1351,7 @@ export const PROPERTIES: Property[] = [
       name: "Marcus Hale",
       role: "Commercial Property Advisor",
       phone: "+1 (415) 555-0177",
-      email: "marcus@meridiangroup.com",
+      email: "marcus@tsestatebuilders.com",
       initials: "MH",
     },
     advantages: [
@@ -1405,8 +1405,8 @@ export const PROJECTS: Project[] = [
       "We engineered a stepped foundation that followed the natural contour, retained selected trees, and unlocked a lower-level garden without compromising ceiling heights.",
   },
   {
-    slug: "meridian-tower",
-    name: "Meridian Office Tower",
+    slug: "ts-estate-tower",
+    name: "TS Estate Office Tower",
     category: "Commercial",
     location: "Financial District, San Francisco, CA",
     status: "In Progress",

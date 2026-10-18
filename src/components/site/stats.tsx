@@ -25,9 +25,6 @@ export function Stats() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-center text-xs text-body-text/70">
-          Figures shown are illustrative placeholders for this demo website and should be replaced with verified company data before launch.
-        </p>
       </Container>
     </section>
   );

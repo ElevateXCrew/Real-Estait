@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Building2, Send, Check, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Check, Phone, Mail, MapPin } from "lucide-react";
 import { Container } from "./ui-helpers";
 import { CONTACT_INFO, SERVICES } from "@/lib/data";
 import { DynamicIcon } from "../dynamic-icon";
@@ -36,10 +36,12 @@ export function Footer() {
           {/* Brand + newsletter */}
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-navy">
-                <Building2 className="h-5 w-5" />
-              </span>
-              <span className="text-xl font-bold tracking-tight">Meridian</span>
+              <img
+                src="/logo.png"
+                alt="TS Estate & Builders logo"
+                className="h-12 w-12 rounded-lg object-contain"
+              />
+              <span className="text-xl font-bold tracking-tight">TS Estate &amp; Builders</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-soft-blue/80">
               {CONTACT_INFO.tagline}

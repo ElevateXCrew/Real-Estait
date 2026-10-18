@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Container, Reveal, SectionHeading } from "./ui-helpers";
 import { ABOUT_IMAGE } from "@/lib/data";
 
@@ -20,34 +19,12 @@ export function About() {
           {/* Image */}
           <Reveal className="relative">
             <div className="relative overflow-hidden rounded-2xl">
-              { }
               <img
                 src={ABOUT_IMAGE}
-                alt="Premium architecture by Meridian"
+                alt="Premium architecture by TS Estate & Builders"
                 className="aspect-[4/5] w-full object-cover sm:aspect-[5/5]"
               />
             </div>
-            {/* Floating trust badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="absolute -bottom-6 -right-2 max-w-[16rem] rounded-2xl border border-border bg-white p-5 shadow-soft-lg sm:-right-6"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-white">
-                  <ShieldCheck className="h-6 w-6" />
-                </span>
-                <div>
-                  <p className="text-2xl font-bold leading-none text-navy">340+</p>
-                  <p className="mt-1 text-xs text-body-text">Projects delivered</p>
-                </div>
-              </div>
-              <p className="mt-3 border-t border-border pt-3 text-xs leading-relaxed text-body-text">
-                Illustrative figure — replace with verified data before launch.
-              </p>
-            </motion.div>
           </Reveal>
 
           {/* Content */}
@@ -59,7 +36,7 @@ export function About() {
             />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-body-text">
               <p>
-                Meridian brings together seasoned agents, architects, engineers, and
+                TS Estate &amp; Builders brings together seasoned agents, architects, engineers, and
                 project managers under one roof — so whether you are buying a home,
                 developing a site, or renovating a space, you work with a single,
                 accountable team.

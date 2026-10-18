@@ -2,7 +2,6 @@
 
 import { PROCESS_STEPS } from "@/lib/data";
 import { Container, Reveal, SectionHeading, Stagger, StaggerItem } from "./ui-helpers";
-import { DynamicIcon } from "../dynamic-icon";
 
 export function Process() {
   return (
@@ -22,9 +21,6 @@ export function Process() {
               <div className="group card-modern relative h-full overflow-hidden rounded-2xl border border-border bg-white p-6 transition-all hover:border-accent-blue/40 hover:shadow-soft-lg">
                 <span className="absolute right-4 top-3 text-5xl font-extrabold text-soft-blue transition-colors group-hover:text-accent-blue/15">
                   {step.number}
-                </span>
-                <span className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white">
-                  <DynamicIcon name={step.icon} className="h-6 w-6" />
                 </span>
                 <h3 className="relative mt-5 text-lg font-bold text-navy">{step.title}</h3>
                 <p className="relative mt-2 text-sm leading-relaxed text-body-text">
