@@ -225,35 +225,25 @@ export function Contact() {
 
           {/* Company info */}
           <Reveal delay={0.1}>
-            <div className="flex h-full flex-col gap-5 rounded-2xl bg-navy p-6 text-white sm:p-8">
-              <div>
-                <h3 className="text-xl font-bold">{CONTACT_INFO.company}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-soft-blue/80">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy to-navy-700 p-6 text-white shadow-soft-lg sm:p-8">
+              {/* Decorative glows */}
+              <span aria-hidden className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent-blue/25 blur-[70px]" />
+              <span aria-hidden className="absolute -bottom-20 -left-10 h-44 w-44 rounded-full bg-accent-blue/15 blur-[70px]" />
+              {/* Top accent line */}
+              <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-blue via-accent-blue/60 to-transparent" />
+
+              <div className="relative">
+                <h3 className="text-2xl font-extrabold tracking-tight">{CONTACT_INFO.company}</h3>
+                <p className="mt-2 max-w-sm text-sm leading-relaxed text-soft-blue/80">
                   {CONTACT_INFO.tagline}
                 </p>
               </div>
-              <div className="space-y-3.5 border-t border-white/10 pt-5">
+
+              <div className="relative mt-6 space-y-3 border-t border-white/10 pt-6">
                 <InfoRow icon="Phone" label="Phone" value={CONTACT_INFO.phone} href={`tel:${CONTACT_INFO.phone}`} />
                 <InfoRow icon="Mail" label="Email" value={CONTACT_INFO.email} href={`mailto:${CONTACT_INFO.email}`} />
                 <InfoRow icon="MapPin" label="Office" value={CONTACT_INFO.address} />
                 <InfoRow icon="Clock" label="Hours" value={CONTACT_INFO.hours} />
-              </div>
-              <div className="border-t border-white/10 pt-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-soft-blue/70">
-                  Follow Us
-                </p>
-                <div className="mt-3 flex gap-2.5">
-                  {CONTACT_INFO.social.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      aria-label={s.label}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-white transition hover:bg-accent-blue"
-                    >
-                      <DynamicIcon name={s.icon} className="h-4.5 w-4.5" />
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
           </Reveal>
@@ -307,17 +297,23 @@ function InfoRow({
   href?: string;
 }) {
   const content = (
-    <div className="flex items-start gap-3">
-      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-white/10 text-accent-blue">
-        <DynamicIcon name={icon} className="h-4.5 w-4.5" />
+    <div className="flex items-start gap-3.5 rounded-xl border border-white/10 bg-white/5 p-3.5 transition-all hover:border-accent-blue/40 hover:bg-white/10">
+      <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-accent-blue/20 text-accent-blue">
+        <DynamicIcon name={icon} className="h-5 w-5" />
       </span>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-soft-blue/60">
+        <p className="text-[0.68rem] font-bold uppercase tracking-wider text-soft-blue/60">
           {label}
         </p>
-        <p className="mt-0.5 text-sm text-white/90">{value}</p>
+        <p className="mt-0.5 text-sm font-medium leading-snug text-white/90">{value}</p>
       </div>
     </div>
   );
-  return href ? <a href={href} className="transition hover:opacity-80">{content}</a> : content;
+  return href ? (
+    <a href={href} className="block transition hover:-translate-y-0.5">
+      {content}
+    </a>
+  ) : (
+    content
+  );
 }

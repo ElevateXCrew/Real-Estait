@@ -72,10 +72,10 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          "fixed inset-x-0 top-0 z-50 bg-white transition-all duration-300",
           scrolled
-            ? "glass-dark border-b border-white/10 shadow-[0_4px_30px_rgba(11,31,58,0.15)]"
-            : "bg-gradient-to-b from-navy/60 to-transparent"
+            ? "border-b border-border shadow-[0_4px_30px_rgba(11,31,58,0.1)]"
+            : ""
         )}
       >
         <Container className="flex h-16 items-center justify-between lg:h-20">
@@ -106,7 +106,7 @@ export function Navbar() {
               >
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="group relative flex items-center gap-1 rounded-lg px-3 py-2 text-[0.82rem] font-semibold text-white/85 transition-colors hover:text-white xl:px-3.5 xl:text-sm"
+                  className="group relative flex items-center gap-1 rounded-lg px-3 py-2 text-[0.82rem] font-semibold text-navy-700 transition-colors hover:text-accent-blue xl:px-3.5 xl:text-sm"
                 >
                   {link.label}
                   {link.dropdown && (
@@ -162,7 +162,7 @@ export function Navbar() {
           <div className="ml-auto hidden items-center gap-4 lg:flex">
             <a
               href="tel:+14155550142"
-              className="flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm transition-all hover:border-accent-blue/50 hover:bg-white/10 hover:text-white"
+              className="flex items-center gap-2 rounded-full border border-border bg-soft-blue/50 px-4 py-2 text-sm font-semibold text-navy-700 transition-all hover:border-accent-blue/50 hover:bg-soft-blue hover:text-accent-blue"
             >
               <Phone className="h-3.5 w-3.5 text-accent-blue" />
               <span className="hidden xl:inline">(415) 555-0142</span>
@@ -177,7 +177,7 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white backdrop-blur-sm transition-colors hover:bg-white/10 lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-soft-blue/50 text-navy-700 transition-colors hover:bg-soft-blue hover:text-accent-blue lg:hidden"
             onClick={() => setMobileNav(true)}
             aria-label="Open menu"
           >

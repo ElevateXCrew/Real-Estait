@@ -6,7 +6,7 @@ import { DynamicIcon } from "../dynamic-icon";
 
 export function WhyChoose() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 sm:py-28">
+    <section className="relative overflow-hidden bg-white pt-6 pb-8 sm:pt-8 sm:pb-10">
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] lg:gap-0">
           {/* Left: heading with decorative frame */}

@@ -1,23 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { Send, Check, Phone, Mail, MapPin } from "lucide-react";
-import { Container } from "./ui-helpers";
+import Link from "next/link";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { CONTACT_INFO, SERVICES } from "@/lib/data";
 import { DynamicIcon } from "../dynamic-icon";
 
 export function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const subscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    setEmail("");
-    setTimeout(() => setSubscribed(false), 4000);
-  };
-
   const realEstate = SERVICES.filter((s) => s.group === "Real Estate").slice(0, 5);
   const construction = SERVICES.filter((s) => s.group === "Construction").slice(0, 5);
 
@@ -31,47 +19,30 @@ export function Footer() {
 
   return (
     <footer className="bg-navy text-white">
-      <Container className="py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          {/* Brand + newsletter */}
+      <div className="mx-auto w-full px-5 py-8 sm:px-8 lg:px-12">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1.2fr]">
+          {/* Brand + social */}
           <div>
             <div className="flex items-center gap-2.5">
-              <img
-                src="/logo.png"
-                alt="TS Estate & Builders logo"
-                className="h-12 w-12 rounded-lg object-contain"
-              />
               <span className="text-xl font-bold tracking-tight">TS Estate &amp; Builders</span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-soft-blue/80">
               {CONTACT_INFO.tagline}
             </p>
 
-            {/* Newsletter */}
-            <form onSubmit={subscribe} className="mt-6">
-              <label className="text-xs font-semibold uppercase tracking-wider text-soft-blue/70">
-                Newsletter
-              </label>
-              <div className="mt-2 flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 p-1.5 focus-within:border-accent-blue">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="h-9 flex-1 bg-transparent px-2 text-sm text-white outline-none placeholder:text-soft-blue/50"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="shine flex h-9 w-9 flex-none items-center justify-center rounded-md bg-accent-blue text-white transition hover:bg-accent-blue/80"
+            {/* Social media icons */}
+            <div className="mt-6 flex items-center gap-3">
+              {CONTACT_INFO.social.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white transition hover:border-accent-blue/50 hover:bg-accent-blue"
                 >
-                  {subscribed ? <Check className="h-4 w-4" /> : <Send className="h-4 w-4" />}
-                </button>
-              </div>
-              {subscribed && (
-                <p className="mt-2 text-xs text-accent-blue">Thanks — you are subscribed.</p>
-              )}
-            </form>
+                  <DynamicIcon name={s.icon} className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -97,48 +68,51 @@ export function Footer() {
               <FooterLink key={s.slug}>{s.title}</FooterLink>
             ))}
           </FooterCol>
-        </div>
 
-        {/* Contact bar */}
-        <div className="mt-12 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-3">
-          <div className="flex items-center gap-2.5 text-sm text-soft-blue/80">
-            <Phone className="h-4 w-4 text-accent-blue" />
-            {CONTACT_INFO.phone}
-          </div>
-          <div className="flex items-center gap-2.5 text-sm text-soft-blue/80">
-            <Mail className="h-4 w-4 text-accent-blue" />
-            {CONTACT_INFO.email}
-          </div>
-          <div className="flex items-start gap-2.5 text-sm text-soft-blue/80">
-            <MapPin className="mt-0.5 h-4 w-4 flex-none text-accent-blue" />
-            {CONTACT_INFO.address}
+          {/* Contact Details */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
+              Contact Details
+            </h4>
+            <ul className="mt-4 space-y-3.5">
+              <li>
+                <a
+                  href={`tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, "")}`}
+                  className="flex items-center gap-2.5 text-sm text-soft-blue/80 transition hover:text-white"
+                >
+                  <Phone className="h-4 w-4 flex-none text-accent-blue" />
+                  {CONTACT_INFO.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="flex items-center gap-2.5 break-all text-sm text-soft-blue/80 transition hover:text-white"
+                >
+                  <Mail className="h-4 w-4 flex-none text-accent-blue" />
+                  {CONTACT_INFO.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-2.5 text-sm text-soft-blue/80">
+                <MapPin className="mt-0.5 h-4 w-4 flex-none text-accent-blue" />
+                {CONTACT_INFO.address}
+              </li>
+            </ul>
           </div>
         </div>
-      </Container>
+      </div>
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <Container className="flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
+        <div className="mx-auto flex w-full flex-col items-center justify-between gap-4 px-5 py-4 sm:flex-row sm:px-8 lg:px-12">
           <p className="text-xs text-soft-blue/60">
             © {new Date().getFullYear()} {CONTACT_INFO.company}. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <button className="text-xs text-soft-blue/70 transition hover:text-white">Privacy Policy</button>
-            <button className="text-xs text-soft-blue/70 transition hover:text-white">Terms &amp; Conditions</button>
-            <div className="flex gap-2.5">
-              {CONTACT_INFO.social.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="flex h-8 w-8 items-center justify-center rounded-md bg-white/10 text-white transition hover:bg-accent-blue"
-                >
-                  <DynamicIcon name={s.icon} className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
+            <Link href="/privacy-policy" className="text-xs text-soft-blue/70 transition hover:text-white">Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="text-xs text-soft-blue/70 transition hover:text-white">Terms &amp; Conditions</Link>
           </div>
-        </Container>
+        </div>
       </div>
     </footer>
   );
@@ -147,7 +121,7 @@ export function Footer() {
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h4 className="text-xs font-semibold uppercase tracking-wider text-soft-blue/70">{title}</h4>
+      <h4 className="text-xs font-semibold uppercase tracking-wider text-white">{title}</h4>
       <ul className="mt-4 space-y-2.5">{children}</ul>
     </div>
   );

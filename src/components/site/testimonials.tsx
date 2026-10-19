@@ -7,6 +7,12 @@ import { TESTIMONIALS } from "@/lib/data";
 import { Container, Reveal } from "./ui-helpers";
 import { cn } from "@/lib/utils";
 
+const AVATARS = [
+  "https://randomuser.me/api/portraits/women/44.jpg",
+  "https://randomuser.me/api/portraits/men/32.jpg",
+  "https://randomuser.me/api/portraits/women/68.jpg",
+];
+
 export function Testimonials() {
   const [index, setIndex] = useState(0);
   const current = TESTIMONIALS[index];
@@ -15,7 +21,7 @@ export function Testimonials() {
   const prev = () => setIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
   return (
-    <section className="relative overflow-hidden bg-navy py-20 sm:py-28">
+    <section className="relative overflow-hidden bg-navy py-12 sm:py-16">
       {/* Background image with overlays */}
       <div aria-hidden className="absolute inset-0">
         <img
@@ -23,9 +29,9 @@ export function Testimonials() {
           alt=""
           className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-navy/85" />
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/80 to-navy-700/90" />
-        <div className="absolute -right-40 top-1/3 h-96 w-96 rounded-full bg-accent-blue/20 blur-[130px]" />
+        <div className="absolute inset-0 bg-navy/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/70 to-navy-700/60" />
+        <div className="absolute -right-40 top-1/3 h-96 w-96 rounded-full bg-accent-blue/10 blur-[130px]" />
       </div>
 
       <Container className="relative z-10">
@@ -89,7 +95,7 @@ export function Testimonials() {
 
                 <div className="flex gap-1">
                   {Array.from({ length: current.rating }).map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-accent-blue text-accent-blue" />
+                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
 
@@ -106,8 +112,18 @@ export function Testimonials() {
                     </p>
 
                     <div className="mt-7 flex items-center gap-4">
-                      <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full border-2 border-accent-blue/50 bg-accent-blue text-sm font-bold text-white">
-                        {current.initials}
+                      <span className="relative h-12 w-12 flex-none overflow-hidden rounded-full border-2 border-amber-400/70 bg-accent-blue">
+                        <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white">
+                          {current.initials}
+                        </span>
+                        <img
+                          src={AVATARS[index % AVATARS.length]}
+                          alt={current.name}
+                          className="absolute inset-0 h-full w-full object-cover"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).style.display = "none";
+                          }}
+                        />
                       </span>
                       <div>
                         <p className="text-base font-bold text-white">{current.name}</p>

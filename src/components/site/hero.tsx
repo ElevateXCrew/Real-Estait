@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Container } from "./ui-helpers";
 
-const HERO_IMAGES = ["/hero-back-1.png", "/hero-back-2.png", "/hero-back-3.png", "/hero-back-4.png", "/hero-back-5.png"];
+const HERO_IMAGES = ["/hero-back-1.png", "/hero-back-2.png", "/hero-back-3.png", "/hero-back-4.png", "/hero-back-5.png", "/hero-back-6.png"];
 const SLIDE_DURATION = 6000;
 
 export function Hero() {
