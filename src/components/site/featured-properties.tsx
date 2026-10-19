@@ -20,7 +20,7 @@ export function FeaturedProperties() {
       : PROPERTIES.filter((p) => p.status === filter);
 
   return (
-    <section id="properties" className="scroll-mt-20 bg-light-bg py-20 sm:py-28">
+    <section id="properties" className="scroll-mt-20 bg-light-bg py-8 sm:py-12">
       <Container>
         <Reveal>
           <SectionHeading

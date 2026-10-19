@@ -6,7 +6,7 @@ import { DynamicIcon } from "../dynamic-icon";
 
 export function Stats() {
   return (
-    <section className="relative z-20 bg-white py-16 sm:py-20">
+    <section className="relative z-20 bg-white py-8 sm:py-12">
       <Container>
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3 lg:grid-cols-5">
           {STATS.map((stat, i) => (

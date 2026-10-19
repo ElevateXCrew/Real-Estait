@@ -19,7 +19,7 @@ export function Projects() {
     filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="scroll-mt-20 bg-white py-20 sm:py-28">
+    <section id="projects" className="scroll-mt-20 bg-white py-8 sm:py-12">
       <Container>
         <Reveal>
           <SectionHeading

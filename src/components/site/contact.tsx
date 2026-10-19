@@ -84,7 +84,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 bg-light-bg py-20 sm:py-28">
+    <section id="contact" className="scroll-mt-20 bg-light-bg py-8 sm:py-12">
       <Container>
         <Reveal>
           <SectionHeading

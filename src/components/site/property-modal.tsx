@@ -75,7 +75,6 @@ function PropertyModalInner({
   onOpenSimilar: (slug: string) => void;
 }) {
   const [activeImg, setActiveImg] = useState(0);
-  const [favorite, setFavorite] = useState(false);
   const [visitStatus, setVisitStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const similar = PROPERTIES.filter(
@@ -184,15 +183,29 @@ function PropertyModalInner({
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setFavorite((p) => !p)}
+                  onClick={async () => {
+                    const shareUrl = `${window.location.origin}?project=${property.slug}`;
+                    const shareData = {
+                      title: property.title,
+                      text: `${property.title} — ${property.location}`,
+                      url: shareUrl,
+                    };
+                    try {
+                      if (navigator.share) {
+                        await navigator.share(shareData);
+                      } else {
+                        await navigator.clipboard.writeText(shareUrl);
+                        alert("Link copied to clipboard!");
+                      }
+                    } catch (err) {
+                      if (err.name !== "AbortError") {
+                        await navigator.clipboard.writeText(shareUrl);
+                        alert("Link copied to clipboard!");
+                      }
+                    }
+                  }}
                   className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-navy transition hover:border-accent-blue hover:text-accent-blue"
-                  aria-label="Save to favorites"
-                >
-                  <Heart className={cn("h-5 w-5", favorite && "fill-accent-blue text-accent-blue")} />
-                </button>
-                <button
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-navy transition hover:border-accent-blue hover:text-accent-blue"
-                  aria-label="Share"
+                  aria-label="Share this property"
                 >
                   <Share2 className="h-5 w-5" />
                 </button>
@@ -308,10 +321,6 @@ function PropertyModalInner({
                     >
                       <Phone className="h-4 w-4" />
                       Contact Agent
-                    </button>
-                    <button className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border text-sm font-semibold text-navy transition hover:border-accent-blue hover:text-accent-blue">
-                      <Download className="h-4 w-4" />
-                      Download Brochure
                     </button>
                   </div>
                 </div>

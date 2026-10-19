@@ -14,7 +14,7 @@ export function CTA() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-navy py-4 sm:py-6">
+    <section className="relative overflow-hidden bg-navy py-8 sm:py-10">
       {/* Decorative glows */}
       <div className="absolute -right-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-accent-blue/10 blur-3xl" />
       <div className="absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-accent-blue/5 blur-3xl" />

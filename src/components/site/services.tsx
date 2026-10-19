@@ -14,7 +14,7 @@ export function Services() {
   const openService = useUIStore((s) => s.openService);
 
   return (
-    <section id="services" className="scroll-mt-20 bg-white pt-20 pb-6 sm:pt-28 sm:pb-8">
+    <section id="services" className="scroll-mt-20 bg-white py-8 sm:py-12">
       <Container>
         <Reveal>
           <SectionHeading

@@ -2,7 +2,6 @@
 
 import { ArrowRight, Check } from "lucide-react";
 import { Container, Reveal, SectionHeading } from "./ui-helpers";
-import { ABOUT_IMAGE } from "@/lib/data";
 
 const POINTS = [
   "Integrated real estate, construction, and property management",
@@ -13,14 +12,14 @@ const POINTS = [
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-20 bg-light-bg py-20 sm:py-28">
+    <section id="about" className="scroll-mt-20 bg-light-bg py-8 sm:py-12">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Image */}
           <Reveal className="relative">
             <div className="relative overflow-hidden rounded-2xl">
               <img
-                src={ABOUT_IMAGE}
+                src="/about.png"
                 alt="Premium architecture by TS Estate & Builders"
                 className="aspect-[4/5] w-full object-cover sm:aspect-[5/5]"
               />

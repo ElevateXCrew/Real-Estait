@@ -21,7 +21,7 @@ export function Testimonials() {
   const prev = () => setIndex((p) => (p - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
 
   return (
-    <section className="relative overflow-hidden bg-navy py-12 sm:py-16">
+    <section className="relative overflow-hidden bg-navy py-8 sm:py-12">
       {/* Background image with overlays */}
       <div aria-hidden className="absolute inset-0">
         <img

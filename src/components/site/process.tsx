@@ -5,7 +5,7 @@ import { Container, Reveal, SectionHeading, Stagger, StaggerItem } from "./ui-he
 
 export function Process() {
   return (
-    <section id="process" className="scroll-mt-20 bg-light-bg py-20 sm:py-28">
+    <section id="process" className="scroll-mt-20 bg-light-bg py-8 sm:py-12">
       <Container>
         <Reveal>
           <SectionHeading

@@ -32,11 +32,8 @@ const NAV_LINKS = [
     label: "Services",
     href: "#services",
     dropdown: [
-      { label: "All Services", href: "#services", icon: "Briefcase" },
       { label: "Real Estate Services", href: "#services", icon: "Home" },
       { label: "Construction Services", href: "#services", icon: "HardHat" },
-      { label: "Property Management", href: "#services", icon: "Building2" },
-      { label: "Turnkey Construction", href: "#services", icon: "KeyRound" },
     ],
   },
   { label: "Projects", href: "#projects" },
