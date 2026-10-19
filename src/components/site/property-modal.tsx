@@ -8,7 +8,6 @@ import { z } from "zod";
 import {
   X,
   Share2,
-  Heart,
   MapPin,
   ChevronLeft,
   ChevronRight,
@@ -18,7 +17,6 @@ import {
   CalendarDays,
   CheckCircle2,
   Loader2,
-  Download,
   ZoomIn,
 } from "lucide-react";
 import { useUIStore } from "@/lib/store";
@@ -47,6 +45,14 @@ type VisitData = z.infer<typeof visitSchema>;
 export function PropertyModal() {
   const { propertySlug, closeProperty, openProperty, openLightbox } = useUIStore();
   const property = PROPERTIES.find((p) => p.slug === propertySlug) || null;
+
+  // Deep link: open the property modal when visiting ?project=slug
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("project");
+    if (slug && PROPERTIES.some((p) => p.slug === slug)) {
+      openProperty(slug);
+    }
+  }, [openProperty]);
 
   return (
     <AnimatePresence>
@@ -198,7 +204,7 @@ function PropertyModalInner({
                         alert("Link copied to clipboard!");
                       }
                     } catch (err) {
-                      if (err.name !== "AbortError") {
+                      if (!(err instanceof Error && err.name === "AbortError")) {
                         await navigator.clipboard.writeText(shareUrl);
                         alert("Link copied to clipboard!");
                       }
