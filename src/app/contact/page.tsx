@@ -138,33 +138,6 @@ export default function ContactPage() {
                 </Reveal>
               ))}
             </div>
-
-            <Reveal delay={0.1}>
-              <div className="mt-10 flex flex-col items-start gap-4 rounded-2xl bg-light-bg p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent-blue/15 text-accent-blue">
-                    <CheckCircle2 className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold text-navy">
-                      Prefer to see us in person?
-                    </p>
-                    <p className="mt-1 text-sm text-body-text">
-                      {CONTACT_INFO.hours}
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href={MAPS_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group inline-flex flex-none items-center gap-2 rounded-xl border border-border bg-white px-5 py-3 text-sm font-bold text-navy transition hover:border-accent-blue/40 hover:text-accent-blue"
-                >
-                  Get Directions
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </a>
-              </div>
-            </Reveal>
           </Container>
         </section>
       </main>
