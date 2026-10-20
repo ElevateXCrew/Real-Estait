@@ -63,14 +63,18 @@ export function Footer() {
           {/* Real Estate Services */}
           <FooterCol title="Real Estate">
             {realEstate.map((s) => (
-              <FooterLink key={s.slug}>{s.title}</FooterLink>
+              <FooterLink key={s.slug} href="/services/real-estate">
+                {s.title}
+              </FooterLink>
             ))}
           </FooterCol>
 
           {/* Construction Services */}
           <FooterCol title="Construction">
             {construction.map((s) => (
-              <FooterLink key={s.slug}>{s.title}</FooterLink>
+              <FooterLink key={s.slug} href="/services/construction">
+                {s.title}
+              </FooterLink>
             ))}
           </FooterCol>
 

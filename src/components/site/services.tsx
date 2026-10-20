@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/data";
@@ -27,7 +28,16 @@ export function Services() {
         {/* Real Estate Services */}
         <div className="mt-14">
           <Reveal>
-            <h3 className="text-2xl font-bold text-navy sm:text-3xl">Real Estate Services</h3>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h3 className="text-2xl font-bold text-navy sm:text-3xl">Real Estate Services</h3>
+              <Link
+                href="/services/real-estate"
+                className="group inline-flex items-center gap-1.5 text-sm font-bold text-accent-blue transition hover:gap-2.5"
+              >
+                View all
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </Reveal>
           <Stagger className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
             {realEstate.map((service) => (
@@ -41,7 +51,16 @@ export function Services() {
         {/* Construction Services */}
         <div className="mt-16">
           <Reveal>
-            <h3 className="text-2xl font-bold text-navy sm:text-3xl">Construction Services</h3>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h3 className="text-2xl font-bold text-navy sm:text-3xl">Construction Services</h3>
+              <Link
+                href="/services/construction"
+                className="group inline-flex items-center gap-1.5 text-sm font-bold text-accent-blue transition hover:gap-2.5"
+              >
+                View all
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </Reveal>
           <Stagger className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
             {construction.map((service) => (

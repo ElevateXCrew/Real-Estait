@@ -212,6 +212,8 @@ function ServiceModalInner({
                     if (el) {
                       const top = el.getBoundingClientRect().top + window.scrollY - 72;
                       window.scrollTo({ top, behavior: "smooth" });
+                    } else {
+                      window.location.href = "/contact";
                     }
                   }, 200);
                 }}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowRight,
   Building2,
   Check,
@@ -13,13 +12,14 @@ import {
 } from "lucide-react";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
+import { PageHero } from "@/components/site/page-hero";
 import {
   AnimatedCounter,
   Container,
   Reveal,
   SectionHeading,
 } from "@/components/site/ui-helpers";
-import { CONTACT_INFO, SERVICES, STATS } from "@/lib/data";
+import { CONTACT_INFO, SERVICES } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Us — TS Estate & Builders",
@@ -66,38 +66,6 @@ const VALUES = [
   },
 ];
 
-const MILESTONES = [
-  {
-    year: "2008",
-    title: "Founded in San Francisco",
-    description:
-      "Started as a boutique property advisory helping families buy and sell homes with expert guidance.",
-  },
-  {
-    year: "2012",
-    title: "Construction Division Launched",
-    description:
-      "Added in-house architecture, engineering, and project management for end-to-end delivery.",
-  },
-  {
-    year: "2016",
-    title: "Multi-City Expansion",
-    description:
-      "Extended operations beyond California, building a network of local market specialists.",
-  },
-  {
-    year: "2020",
-    title: "Full-Service Platform",
-    description:
-      "Unified rentals, management, investment consulting, and turnkey construction under one roof.",
-  },
-  {
-    year: "2026",
-    title: "24 Cities & Growing",
-    description:
-      "1,280+ active listings, 342+ completed projects, and 2,150+ satisfied clients across the country.",
-  },
-];
 
 export default function AboutPage() {
   const realEstate = SERVICES.filter((s) => s.group === "Real Estate");
@@ -109,51 +77,12 @@ export default function AboutPage() {
 
       <main className="flex-1">
         {/* Page header */}
-        <section className="bg-navy pb-16 pt-32 lg:pb-20 lg:pt-40">
-          <Container>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-soft-blue/80 transition hover:text-white"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to Home
-            </Link>
-            <div className="mt-6 max-w-3xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-soft-blue">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
-                About Us
-              </span>
-              <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Building trust in every{" "}
-                <span className="text-gradient-light">property and project</span>.
-              </h1>
-              <p className="mt-5 text-base leading-relaxed text-soft-blue/80 sm:text-lg">
-                {CONTACT_INFO.company} brings together seasoned agents, architects,
-                engineers, and project managers under one roof — so whether you are
-                buying a home, developing a site, or renovating a space, you work with
-                a single, accountable team.
-              </p>
-            </div>
-          </Container>
-        </section>
-
-        {/* Stats band */}
-        <section className="border-b border-border bg-light-bg py-8 sm:py-10">
-          <Container>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
-              {STATS.map((stat, i) => (
-                <Reveal key={stat.label} delay={i * 0.05} className="text-center">
-                  <p className="text-3xl font-extrabold text-navy sm:text-4xl">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                  </p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-body-text sm:text-sm">
-                    {stat.label}
-                  </p>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </section>
+        <PageHero
+          title="About Us"
+          breadcrumb="About"
+          image="/about.png"
+          description="Real estate, construction, architecture, and property development — under one trusted roof. One accountable team for buying, building, and everything in between."
+        />
 
         {/* Our story */}
         <section className="bg-white py-14 sm:py-16">
@@ -166,14 +95,6 @@ export default function AboutPage() {
                     alt="Premium architecture by TS Estate & Builders"
                     className="aspect-[4/5] w-full object-cover sm:aspect-[5/5]"
                   />
-                </div>
-                <div className="absolute -bottom-5 right-4 hidden rounded-2xl bg-navy px-6 py-5 shadow-soft-lg sm:block lg:right-8">
-                  <p className="text-3xl font-extrabold text-white">
-                    <AnimatedCounter value={18} suffix="+" />
-                  </p>
-                  <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-soft-blue/80">
-                    Years of Experience
-                  </p>
                 </div>
               </Reveal>
 
@@ -224,13 +145,10 @@ export default function AboutPage() {
                 description="Clear purpose, shared across every agent, architect, and site engineer on our team."
               />
             </Reveal>
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              <Reveal delay={0.05}>
-                <div className="card-modern h-full rounded-2xl border border-border bg-white p-7 sm:p-8">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-blue/10 text-accent-blue">
-                    <Target className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-xl font-bold text-navy sm:text-2xl">
+            <div className="mx-auto mt-10 grid max-w-4xl gap-10 sm:grid-cols-2">
+              <Reveal>
+                <div className="h-full sm:pr-10">
+                  <h3 className="text-xl font-bold text-navy sm:text-2xl">
                     Our Mission
                   </h3>
                   <p className="mt-3 text-base leading-relaxed text-body-text">
@@ -238,13 +156,12 @@ export default function AboutPage() {
                   </p>
                 </div>
               </Reveal>
-              <Reveal delay={0.12}>
-                <div className="h-full overflow-hidden rounded-2xl bg-navy p-7 text-white sm:p-8">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-blue/20 text-accent-blue">
-                    <Eye className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-xl font-bold sm:text-2xl">Our Vision</h3>
-                  <p className="mt-3 text-base leading-relaxed text-soft-blue/80">
+              <Reveal delay={0.1}>
+                <div className="h-full border-border sm:border-l-4 sm:pl-10">
+                  <h3 className="text-xl font-bold text-navy sm:text-2xl">
+                    Our Vision
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-body-text">
                     {VISION}
                   </p>
                 </div>
@@ -282,48 +199,6 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* Journey */}
-        <section className="bg-light-bg py-14 sm:py-16">
-          <Container>
-            <Reveal>
-              <SectionHeading
-                eyebrow="Our Journey"
-                title="From a local advisory to a national platform."
-              />
-            </Reveal>
-            <div className="relative mt-10">
-              <div className="absolute left-0 top-0 hidden h-full w-px bg-border lg:left-1/2 lg:block" />
-              <div className="space-y-6 lg:space-y-8">
-                {MILESTONES.map((m, i) => (
-                  <Reveal key={m.year} delay={i * 0.05}>
-                    <div className="lg:grid lg:grid-cols-2 lg:gap-12">
-                      <div
-                        className={
-                          i % 2 === 0
-                            ? "lg:col-start-1 lg:pr-12 lg:text-right"
-                            : "lg:col-start-2 lg:pl-12"
-                        }
-                      >
-                        <div className="card-modern rounded-2xl border border-border bg-white p-6">
-                          <span className="inline-block rounded-full bg-accent-blue/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent-blue">
-                            {m.year}
-                          </span>
-                          <h3 className="mt-3 text-lg font-bold text-navy">
-                            {m.title}
-                          </h3>
-                          <p className="mt-2 text-sm leading-relaxed text-body-text">
-                            {m.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </section>
-
         {/* What we do */}
         <section className="bg-white py-14 sm:py-16">
           <Container>
@@ -336,18 +211,18 @@ export default function AboutPage() {
             </Reveal>
             <div className="mt-10 grid gap-6 md:grid-cols-2">
               <Reveal delay={0.05}>
-                <div className="card-modern flex h-full flex-col rounded-2xl border border-border bg-white p-7 sm:p-8">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-soft-blue text-accent-blue">
+                <div className="flex h-full flex-col overflow-hidden rounded-2xl bg-navy p-7 text-white sm:p-8">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-blue/20 text-accent-blue">
                     <Home className="h-6 w-6" />
                   </span>
-                  <h3 className="mt-5 text-xl font-bold text-navy sm:text-2xl">
+                  <h3 className="mt-5 text-xl font-bold sm:text-2xl">
                     Real Estate
                   </h3>
                   <ul className="mt-4 grid flex-1 gap-2.5 sm:grid-cols-2">
                     {realEstate.map((s) => (
                       <li
                         key={s.slug}
-                        className="flex items-start gap-2 text-sm text-body-text"
+                        className="flex items-start gap-2 text-sm text-soft-blue/80"
                       >
                         <Check
                           className="mt-0.5 h-4 w-4 flex-none text-accent-blue"
@@ -358,7 +233,7 @@ export default function AboutPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/#services"
+                    href="/services/real-estate"
                     className="group mt-6 inline-flex items-center gap-2 text-sm font-bold text-accent-blue transition hover:gap-3"
                   >
                     Explore real estate services
@@ -389,10 +264,10 @@ export default function AboutPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/#projects"
+                    href="/services/construction"
                     className="group mt-6 inline-flex items-center gap-2 text-sm font-bold text-accent-blue transition hover:gap-3"
                   >
-                    View our projects
+                    Explore construction services
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
