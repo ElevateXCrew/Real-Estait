@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { CONTACT_INFO, SERVICES } from "@/lib/data";
 import { DynamicIcon } from "../dynamic-icon";
@@ -8,12 +9,16 @@ import { DynamicIcon } from "../dynamic-icon";
 export function Footer() {
   const realEstate = SERVICES.filter((s) => s.group === "Real Estate").slice(0, 5);
   const construction = SERVICES.filter((s) => s.group === "Construction").slice(0, 5);
+  const router = useRouter();
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 72;
       window.scrollTo({ top, behavior: "smooth" });
+    } else {
+      // Section lives on the home page — navigate there with the hash
+      router.push(`/${href}`);
     }
   };
 
@@ -48,11 +53,11 @@ export function Footer() {
           {/* Quick Links */}
           <FooterCol title="Quick Links">
             <FooterLink onClick={() => scrollTo("#home")}>Home</FooterLink>
-            <FooterLink onClick={() => scrollTo("#about")}>About Us</FooterLink>
+            <FooterLink href="/about">About Us</FooterLink>
             <FooterLink onClick={() => scrollTo("#properties")}>Properties</FooterLink>
             <FooterLink onClick={() => scrollTo("#projects")}>Construction</FooterLink>
             <FooterLink onClick={() => scrollTo("#projects")}>Projects</FooterLink>
-            <FooterLink onClick={() => scrollTo("#contact")}>Contact Us</FooterLink>
+            <FooterLink href="/contact">Contact Us</FooterLink>
           </FooterCol>
 
           {/* Real Estate Services */}
@@ -130,19 +135,30 @@ function FooterCol({ title, children }: { title: string; children: React.ReactNo
 function FooterLink({
   children,
   onClick,
+  href,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
+  href?: string;
 }) {
+  const cls =
+    "group flex items-center gap-1.5 text-sm text-soft-blue/80 transition hover:text-white";
+  const line = (
+    <span className="h-px w-0 bg-accent-blue transition-all duration-200 group-hover:w-3" />
+  );
   return (
     <li>
-      <button
-        onClick={onClick}
-        className="group flex items-center gap-1.5 text-sm text-soft-blue/80 transition hover:text-white"
-      >
-        <span className="h-px w-0 bg-accent-blue transition-all duration-200 group-hover:w-3" />
-        {children}
-      </button>
+      {href ? (
+        <Link href={href} className={cls}>
+          {line}
+          {children}
+        </Link>
+      ) : (
+        <button onClick={onClick} className={cls}>
+          {line}
+          {children}
+        </button>
+      )}
     </li>
   );
 }

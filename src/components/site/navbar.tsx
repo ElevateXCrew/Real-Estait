@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -15,7 +16,7 @@ import { DynamicIcon } from "../dynamic-icon";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about" },
   {
     label: "Properties",
     href: "#properties",
@@ -37,13 +38,14 @@ const NAV_LINKS = [
     ],
   },
   { label: "Projects", href: "#projects" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { mobileNavOpen, setMobileNav } = useUIStore();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -55,10 +57,17 @@ export function Navbar() {
   const handleNavClick = (href: string) => {
     setMobileNav(false);
     setOpenDropdown(null);
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 72;
       window.scrollTo({ top, behavior: "smooth" });
+    } else {
+      // Section lives on the home page — navigate there with the hash
+      router.push(`/${href}`);
     }
   };
 

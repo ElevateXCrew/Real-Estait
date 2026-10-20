@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Container, Reveal, SectionHeading } from "./ui-helpers";
 
@@ -57,19 +58,13 @@ export function About() {
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => {
-                const el = document.querySelector("#services");
-                if (el) {
-                  const top = el.getBoundingClientRect().top + window.scrollY - 72;
-                  window.scrollTo({ top, behavior: "smooth" });
-                }
-              }}
+            <Link
+              href="/about"
               className="shine group mt-8 inline-flex h-11 items-center gap-2 rounded-xl bg-navy px-6 text-sm font-bold text-white transition-all hover:bg-navy-700 hover:shadow-glow"
             >
               Discover Our Company
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </button>
+            </Link>
           </Reveal>
         </div>
       </Container>
