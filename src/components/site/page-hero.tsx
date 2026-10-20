@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./ui-helpers";
 
 export function PageHero({
@@ -15,11 +16,14 @@ export function PageHero({
   return (
     <section className="relative isolate overflow-hidden bg-navy">
       {/* Background photo */}
-      <img
+      <Image
         src={image}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
       />
       {/* Navy overlay */}
       <div aria-hidden="true" className="absolute inset-0 bg-navy/85" />

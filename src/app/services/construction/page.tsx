@@ -5,7 +5,7 @@ import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { PageHero } from "@/components/site/page-hero";
 import { ServiceGroupGrid } from "@/components/site/service-group-grid";
-import { ServiceModal } from "@/components/site/service-modal";
+import { ModalOverlays } from "@/components/site/modal-overlays";
 import { Container, Reveal, SectionHeading } from "@/components/site/ui-helpers";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function ConstructionServicesPage() {
         <PageHero
           title="Construction Services"
           breadcrumb="Services"
-          image="/cta-image.png"
+          image="/cta-image.webp"
           description="Architecture, construction, interiors, renovation, and turnkey delivery — premium materials, certified contractors, and disciplined schedules."
         />
 
@@ -76,7 +76,7 @@ export default function ConstructionServicesPage() {
       </main>
 
       <Footer />
-      <ServiceModal />
+      <ModalOverlays />
     </div>
   );
 }

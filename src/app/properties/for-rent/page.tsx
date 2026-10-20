@@ -5,7 +5,7 @@ import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { PageHero } from "@/components/site/page-hero";
 import { PropertyGroupGrid } from "@/components/site/property-group-grid";
-import { PropertyModal } from "@/components/site/property-modal";
+import { ModalOverlays } from "@/components/site/modal-overlays";
 import { Container, Reveal, SectionHeading } from "@/components/site/ui-helpers";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function PropertiesForRentPage() {
         <PageHero
           title="Properties For Rent"
           breadcrumb="Properties"
-          image="/hero-back-6.png"
+          image="/hero-back-6.webp"
           description="Quality rental homes and apartments — thoroughly screened listings, fair pricing, and support throughout your tenancy."
         />
 
@@ -76,7 +76,7 @@ export default function PropertiesForRentPage() {
       </main>
 
       <Footer />
-      <PropertyModal />
+      <ModalOverlays />
     </div>
   );
 }

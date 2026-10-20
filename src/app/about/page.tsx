@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Building2,
@@ -80,7 +81,7 @@ export default function AboutPage() {
         <PageHero
           title="About Us"
           breadcrumb="About"
-          image="/about.png"
+          image="/about.webp"
           description="Real estate, construction, architecture, and property development — under one trusted roof. One accountable team for buying, building, and everything in between."
         />
 
@@ -90,9 +91,11 @@ export default function AboutPage() {
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <Reveal className="relative">
                 <div className="relative overflow-hidden rounded-2xl">
-                  <img
-                    src="/about.png"
+                  <Image
+                    src="/about.webp"
                     alt="Premium architecture by TS Estate & Builders"
+                    width={1000}
+                    height={1000}
                     className="aspect-[4/5] w-full object-cover sm:aspect-[5/5]"
                   />
                 </div>

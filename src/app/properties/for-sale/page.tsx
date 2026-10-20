@@ -5,7 +5,7 @@ import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { PageHero } from "@/components/site/page-hero";
 import { PropertyGroupGrid } from "@/components/site/property-group-grid";
-import { PropertyModal } from "@/components/site/property-modal";
+import { ModalOverlays } from "@/components/site/modal-overlays";
 import { Container, Reveal, SectionHeading } from "@/components/site/ui-helpers";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function PropertiesForSalePage() {
         <PageHero
           title="Properties For Sale"
           breadcrumb="Properties"
-          image="/hero-back-4.png"
+          image="/hero-back-4.webp"
           description="Verified listings with accurate specs, legal status, and current condition — click any property to see full details, gallery, and floor plan."
         />
 
@@ -76,7 +76,7 @@ export default function PropertiesForSalePage() {
       </main>
 
       <Footer />
-      <PropertyModal />
+      <ModalOverlays />
     </div>
   );
 }

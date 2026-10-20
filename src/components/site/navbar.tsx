@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -91,9 +92,12 @@ export function Navbar() {
             className="flex items-center gap-3"
           >
             {/* Big logo at far left */}
-            <img
-              src="/logo.png"
+            <Image
+              src="/logo.webp"
               alt="TS Estate & Builders"
+              width={160}
+              height={160}
+              priority
               className="-ml-5 h-32 w-32 flex-none rounded-full object-contain drop-shadow-[0_6px_18px_rgba(11,31,58,0.4)] sm:-ml-8 lg:-ml-12 lg:h-40 lg:w-40"
             />
           </a>
@@ -209,9 +213,11 @@ export function Navbar() {
             >
               <div className="flex h-16 items-center justify-between border-b border-border px-5">
                 <span className="flex items-center gap-2.5">
-                  <img
-                    src="/logo.png"
+                  <Image
+                    src="/logo.webp"
                     alt="TS Estate & Builders logo"
+                    width={48}
+                    height={48}
                     className="h-12 w-12 rounded-xl object-contain"
                   />
                   <span className="flex flex-col leading-none">

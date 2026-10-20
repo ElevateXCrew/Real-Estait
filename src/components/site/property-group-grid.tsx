@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   BedDouble,
@@ -133,10 +134,12 @@ export function PropertyGroupGrid({ status }: { status: "For Sale" | "For Rent" 
             >
               {/* Image */}
               <div className="relative aspect-[4/3] w-full overflow-hidden">
-                <img
+                <Image
                   src={property.cover}
                   alt={property.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <span
                   className={cn(

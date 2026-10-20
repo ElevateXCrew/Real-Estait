@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Container } from "./ui-helpers";
 
-const HERO_IMAGES = ["/hero-back-1.png", "/hero-back-2.png", "/hero-back-3.png", "/hero-back-4.png", "/hero-back-5.png", "/hero-back-6.png"];
+const HERO_IMAGES = ["/hero-back-1.webp", "/hero-back-2.webp", "/hero-back-3.webp", "/hero-back-4.webp", "/hero-back-5.webp", "/hero-back-6.webp"];
 const SLIDE_DURATION = 6000;
 
 export function Hero() {
@@ -31,10 +32,8 @@ export function Hero() {
       {/* Background slideshow with crossfade + zoom */}
       <div className="absolute inset-0">
         <AnimatePresence>
-          <motion.img
+          <motion.div
             key={slide}
-            src={HERO_IMAGES[slide]}
-            alt="Modern luxury architecture"
             initial={{ opacity: 0, scale: 1.12 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -42,8 +41,17 @@ export function Hero() {
               opacity: { duration: 1.2, ease: "easeInOut" },
               scale: { duration: 9, ease: "easeOut" },
             }}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+            className="absolute inset-0"
+          >
+            <Image
+              src={HERO_IMAGES[slide]}
+              alt="Modern luxury architecture"
+              fill
+              priority={slide === 0}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
         </AnimatePresence>
         {/* Layered overlays for depth and contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/80 to-navy/25" />

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { MapPin, ArrowUpRight, Calendar } from "lucide-react";
@@ -62,11 +63,12 @@ export function Projects() {
                 className="group card-modern relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white text-left transition-all hover:border-accent-blue/40 hover:shadow-soft-lg"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  { }
-                  <img
+                  <Image
                     src={project.cover}
                     alt={project.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <span
                     className={cn(

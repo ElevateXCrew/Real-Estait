@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 import { Container } from "./ui-helpers";
@@ -76,9 +77,11 @@ export function CTA() {
             className="relative lg:translate-x-6 lg:-mr-4"
           >
             <div className="relative overflow-hidden rounded-3xl shadow-soft-lg">
-              <img
-                src="/cta-image.png"
+              <Image
+                src="/cta-image.webp"
                 alt="TS Estate & Builders project"
+                width={1200}
+                height={750}
                 className="aspect-[16/10] w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />

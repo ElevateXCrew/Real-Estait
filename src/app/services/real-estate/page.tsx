@@ -5,7 +5,7 @@ import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { PageHero } from "@/components/site/page-hero";
 import { ServiceGroupGrid } from "@/components/site/service-group-grid";
-import { ServiceModal } from "@/components/site/service-modal";
+import { ModalOverlays } from "@/components/site/modal-overlays";
 import { Container, Reveal, SectionHeading } from "@/components/site/ui-helpers";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RealEstateServicesPage() {
         <PageHero
           title="Real Estate Services"
           breadcrumb="Services"
-          image="/hero-back-1.png"
+          image="/hero-back-1.webp"
           description="Buying, selling, renting, managing, and investing — expert agents who know the market and negotiate firmly on your behalf."
         />
 
@@ -76,7 +76,7 @@ export default function RealEstateServicesPage() {
       </main>
 
       <Footer />
-      <ServiceModal />
+      <ModalOverlays />
     </div>
   );
 }

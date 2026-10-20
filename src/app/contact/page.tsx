@@ -49,7 +49,7 @@ export default function ContactPage() {
         <PageHero
           title="Contact Us"
           breadcrumb="Contact"
-          image="/cta-image.png"
+          image="/cta-image.webp"
           description="Buying, selling, building, or renovating — tell us what you have in mind and the right specialist will get back to you within one business day."
         />
 

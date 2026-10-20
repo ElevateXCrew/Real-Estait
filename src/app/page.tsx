@@ -1,5 +1,3 @@
-"use client";
-
 import { Navbar } from "@/components/site/navbar";
 import { Hero } from "@/components/site/hero";
 import { Stats } from "@/components/site/stats";
@@ -9,10 +7,7 @@ import { Projects } from "@/components/site/projects";
 import { WhyChoose } from "@/components/site/why-choose";
 import { CTA } from "@/components/site/cta";
 import { Footer } from "@/components/site/footer";
-import { PropertyModal } from "@/components/site/property-modal";
-import { ServiceModal } from "@/components/site/service-modal";
-import { ProjectModal } from "@/components/site/project-modal";
-import { Lightbox } from "@/components/site/lightbox";
+import { ModalOverlays } from "@/components/site/modal-overlays";
 
 export default function Home() {
   return (
@@ -30,10 +25,7 @@ export default function Home() {
       <Footer />
 
       {/* Overlays */}
-      <PropertyModal />
-      <ServiceModal />
-      <ProjectModal />
-      <Lightbox />
+      <ModalOverlays />
     </div>
   );
 }

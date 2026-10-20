@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/data";
@@ -21,10 +22,12 @@ export function ServiceGroupGrid({ group }: { group: "Real Estate" | "Constructi
             className="group card-modern flex h-full w-full flex-col items-start overflow-hidden rounded-2xl border border-border bg-white text-left transition-colors hover:border-accent-blue/40 hover:shadow-soft-lg"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden">
-              <img
+              <Image
                 src={service.image}
                 alt={service.title}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
             <div className="flex flex-1 flex-col p-5 sm:p-6">

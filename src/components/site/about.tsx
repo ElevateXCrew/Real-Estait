@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
 import { Container, Reveal, SectionHeading } from "./ui-helpers";
 
@@ -19,9 +20,11 @@ export function About() {
           {/* Image */}
           <Reveal className="relative">
             <div className="relative overflow-hidden rounded-2xl">
-              <img
-                src="/about.png"
+              <Image
+                src="/about.webp"
                 alt="Premium architecture by TS Estate & Builders"
+                width={1000}
+                height={1000}
                 className="aspect-[4/5] w-full object-cover sm:aspect-[5/5]"
               />
             </div>
