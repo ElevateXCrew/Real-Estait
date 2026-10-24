@@ -15,6 +15,8 @@ export function FeaturedProperties() {
   const [filter, setFilter] = useState<Filter>("All");
   const openProperty = useUIStore((s) => s.openProperty);
 
+  if (PROPERTIES.length === 0) return null;
+
   const filtered =
     filter === "All"
       ? PROPERTIES
@@ -105,13 +107,15 @@ export function FeaturedProperties() {
                         {property.bedrooms} Beds
                       </span>
                     )}
-                    <span className="flex items-center gap-1.5">
-                      <Bath className="h-4 w-4 text-navy-700" />
-                      {property.bathrooms} Baths
-                    </span>
+                    {property.bathrooms > 0 && (
+                      <span className="flex items-center gap-1.5">
+                        <Bath className="h-4 w-4 text-navy-700" />
+                        {property.bathrooms} Baths
+                      </span>
+                    )}
                     <span className="flex items-center gap-1.5">
                       <Maximize className="h-4 w-4 text-navy-700" />
-                      {property.area.toLocaleString()} sqft
+                      {property.areaLabel ?? `${property.area.toLocaleString()} sqft`}
                     </span>
                   </div>
 

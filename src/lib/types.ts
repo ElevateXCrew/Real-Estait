@@ -4,7 +4,9 @@ export type ListingStatus = "For Sale" | "For Rent";
 export type PropertyType =
   | "Villa"
   | "Apartment"
+  | "Flat"
   | "House"
+  | "Farm House"
   | "Penthouse"
   | "Townhouse"
   | "Office"
@@ -36,6 +38,7 @@ export interface Property {
   bedrooms: number;
   bathrooms: number;
   area: number; // sq ft
+  areaLabel?: string; // display override, e.g. "7 Marla"
   parking: number;
   yearBuilt: number;
   condition: string;

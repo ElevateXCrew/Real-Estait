@@ -49,6 +49,7 @@ export function PropertyGroupGrid({ status }: { status: "For Sale" | "For Rent" 
   return (
     <div>
       {/* Filters bar */}
+      {all.length > 0 && (
       <div className="rounded-2xl border border-border bg-white p-4 sm:p-5">
         <div className="flex flex-col gap-4">
           {/* Type pills */}
@@ -109,14 +110,17 @@ export function PropertyGroupGrid({ status }: { status: "For Sale" | "For Rent" 
           </div>
         </div>
       </div>
+      )}
 
       {/* Results count */}
-      <p className="mt-5 text-sm font-semibold text-body-text">
-        Showing {filtered.length} of {all.length}{" "}
-        {filtered.length === 1 ? "property" : "properties"}
-        {type !== "All" && ` · ${type}`}
-        {bedrooms > 0 && ` · ${bedrooms}+ beds`}
-      </p>
+      {all.length > 0 && (
+        <p className="mt-5 text-sm font-semibold text-body-text">
+          Showing {filtered.length} of {all.length}{" "}
+          {filtered.length === 1 ? "property" : "properties"}
+          {type !== "All" && ` · ${type}`}
+          {bedrooms > 0 && ` · ${bedrooms}+ beds`}
+        </p>
+      )}
 
       {/* Grid */}
       <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -172,13 +176,15 @@ export function PropertyGroupGrid({ status }: { status: "For Sale" | "For Rent" 
                       {property.bedrooms} Beds
                     </span>
                   )}
-                  <span className="flex items-center gap-1.5">
-                    <Bath className="h-4 w-4 text-navy-700" />
-                    {property.bathrooms} Baths
-                  </span>
+                  {property.bathrooms > 0 && (
+                    <span className="flex items-center gap-1.5">
+                      <Bath className="h-4 w-4 text-navy-700" />
+                      {property.bathrooms} Baths
+                    </span>
+                  )}
                   <span className="flex items-center gap-1.5">
                     <Maximize className="h-4 w-4 text-navy-700" />
-                    {property.area.toLocaleString()} sqft
+                    {property.areaLabel ?? `${property.area.toLocaleString()} sqft`}
                   </span>
                 </div>
 
@@ -207,20 +213,26 @@ export function PropertyGroupGrid({ status }: { status: "For Sale" | "For Rent" 
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-soft-blue text-accent-blue">
             <SearchX className="h-7 w-7" />
           </span>
-          <h3 className="mt-4 text-lg font-bold text-navy">No matching properties</h3>
+          <h3 className="mt-4 text-lg font-bold text-navy">
+            {all.length === 0 ? "No properties available right now" : "No matching properties"}
+          </h3>
           <p className="mt-2 max-w-sm text-sm text-body-text">
-            Try changing the type or bedroom filters to see more listings.
+            {all.length === 0
+              ? "New listings are added regularly — get in touch and we will let you know as soon as something fits your needs."
+              : "Try changing the type or bedroom filters to see more listings."}
           </p>
-          <button
-            onClick={() => {
-              setType("All");
-              setBedrooms(0);
-              setSort("default");
-            }}
-            className="mt-5 inline-flex h-10 items-center rounded-xl bg-navy px-5 text-sm font-bold text-white transition hover:bg-navy-700"
-          >
-            Reset Filters
-          </button>
+          {all.length > 0 && (
+            <button
+              onClick={() => {
+                setType("All");
+                setBedrooms(0);
+                setSort("default");
+              }}
+              className="mt-5 inline-flex h-10 items-center rounded-xl bg-navy px-5 text-sm font-bold text-white transition hover:bg-navy-700"
+            >
+              Reset Filters
+            </button>
+          )}
         </div>
       )}
     </div>
