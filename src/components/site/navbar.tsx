@@ -98,7 +98,7 @@ export function Navbar() {
               width={160}
               height={160}
               priority
-              className="-ml-5 h-32 w-32 flex-none rounded-full object-contain drop-shadow-[0_6px_18px_rgba(11,31,58,0.4)] sm:-ml-8 lg:-ml-12 lg:h-40 lg:w-40"
+              className="-ml-4 h-24 w-24 flex-none rounded-full object-contain drop-shadow-[0_6px_18px_rgba(11,31,58,0.4)] sm:-ml-5 lg:-ml-7 lg:h-28 lg:w-28"
             />
           </a>
 

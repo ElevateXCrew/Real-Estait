@@ -4270,8 +4270,8 @@ export const PROJECTS: Project[] = [
     location: "Embarcadero, San Francisco, CA",
     status: "Completed",
     year: "2023",
-    cover: IMG.commercial[2],
-    gallery: [IMG.commercial[2], IMG.interiors[7], IMG.commercial[4], IMG.interiors[1]],
+    cover: IMG.interiors[7],
+    gallery: [IMG.interiors[7], IMG.interiors[0], IMG.interiors[1], "/properties/u04.webp"],
     description:
       "A turnkey fit-out for a flagship retail store, balancing brand expression with the practical demands of high-footfall daily operation.",
     scope: [
