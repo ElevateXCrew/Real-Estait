@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Container, Reveal, SectionHeading } from "./ui-helpers";
 import { CONTACT_INFO } from "@/lib/data";
 import { DynamicIcon } from "../dynamic-icon";
@@ -43,8 +43,12 @@ const PROJECT_TYPES = ["Residential", "Commercial", "Renovation", "Land / Plot",
 const BUDGETS = ["Under $100k", "$100k – $500k", "$500k – $1M", "$1M – $5M", "$5M+", "Prefer to discuss"];
 const CONTACT_METHODS = ["Email", "Phone", "WhatsApp", "In-person meeting"];
 
+const WHATSAPP_NUMBER = CONTACT_INFO.phone
+  .replace(/[^0-9]/g, "")
+  .replace(/^0/, "92");
+
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const {
     register,
@@ -65,22 +69,37 @@ export function Contact() {
     },
   });
 
-  const onSubmit = async (data: FormData) => {
-    setStatus("loading");
+  const onSubmit = (data: FormData) => {
+    const message = [
+      "*New Consultation Request*",
+      "",
+      `*Name:* ${data.fullName}`,
+      `*Email:* ${data.email}`,
+      `*Phone:* ${data.phone}`,
+      `*Service:* ${data.service}`,
+      `*Project Type:* ${data.projectType}`,
+      `*Budget:* ${data.budget}`,
+      `*Preferred Contact:* ${data.contactMethod}`,
+      "",
+      `*Message:* ${data.message}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      message
+    )}`;
+
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setStatus("success");
+      const opened = window.open(whatsappUrl, "_blank");
+      if (!opened) {
+        window.location.assign(whatsappUrl);
+      }
       reset();
-      setTimeout(() => setStatus("idle"), 6000);
+      setStatus("success");
     } catch {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 6000);
     }
+
+    setTimeout(() => setStatus("idle"), 8000);
   };
 
   return (
@@ -90,7 +109,7 @@ export function Contact() {
           <SectionHeading
             eyebrow="Get In Touch"
             title="Request a Consultation"
-            description="Tell us about your property goals or construction plans. We will respond within one business day."
+            description="Fill in your details and send them straight to our team on WhatsApp. We will respond within one business day."
           />
         </Reveal>
 
@@ -121,7 +140,7 @@ export function Contact() {
                   <input
                     {...register("phone")}
                     className={inputCls(!!errors.phone)}
-                    placeholder="+1 (415) 555-0123"
+                    placeholder="0336 5229600"
                   />
                 </Field>
                 <Field label="Service Required" error={errors.service?.message} required>
@@ -187,7 +206,7 @@ export function Contact() {
                     className="mt-4 flex items-start gap-2.5 rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-700"
                   >
                     <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 flex-none text-green-600" />
-                    <span>Thank you — your inquiry has been received. Our team will contact you within one business day.</span>
+                    <span>WhatsApp opened with your details — press send there to complete your inquiry.</span>
                   </motion.div>
                 )}
                 {status === "error" && (
@@ -198,28 +217,22 @@ export function Contact() {
                     className="mt-4 flex items-start gap-2.5 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
                   >
                     <AlertCircle className="mt-0.5 h-4.5 w-4.5 flex-none text-red-600" />
-                    <span>Something went wrong sending your inquiry. Please try again or contact us directly by phone or email.</span>
+                    <span>WhatsApp could not be opened. Please contact us directly at {CONTACT_INFO.phone}.</span>
                   </motion.div>
                 )}
               </AnimatePresence>
 
               <button
                 type="submit"
-                disabled={status === "loading"}
-                className="shine group mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-navy px-6 text-sm font-bold text-white transition-all hover:bg-navy-700 hover:shadow-glow disabled:opacity-70 sm:w-auto"
+                className="shine group mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-navy px-6 text-sm font-bold text-white transition-all hover:bg-navy-700 hover:shadow-glow sm:w-auto"
               >
-                {status === "loading" ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Submit Inquiry
-                    <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </>
-                )}
+                Send on WhatsApp
+                <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
+              <p className="mt-3 text-xs text-body-text">
+                This opens WhatsApp with your details pre-filled. Press send there to
+                complete your inquiry.
+              </p>
             </form>
           </Reveal>
 
@@ -240,7 +253,12 @@ export function Contact() {
               </div>
 
               <div className="relative mt-6 space-y-3 border-t border-white/10 pt-6">
-                <InfoRow icon="Phone" label="Phone" value={CONTACT_INFO.phone} href={`tel:${CONTACT_INFO.phone}`} />
+                <InfoRow
+                  icon="Phone"
+                  label="Phone"
+                  value={CONTACT_INFO.phone}
+                  href={`tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, "")}`}
+                />
                 <InfoRow icon="Mail" label="Email" value={CONTACT_INFO.email} href={`mailto:${CONTACT_INFO.email}`} />
                 <InfoRow icon="MapPin" label="Office" value={CONTACT_INFO.address} />
                 <InfoRow icon="Clock" label="Hours" value={CONTACT_INFO.hours} />

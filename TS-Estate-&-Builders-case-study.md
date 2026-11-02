@@ -18,7 +18,7 @@ TS Estate & Builders is an integrated real estate and construction company offer
 
 The brief was to create one digital home for two closely connected practices: property and construction. It needed to present the brand as established and trustworthy, make listings easy to explore, give every property a complete story, and turn interest into a consultation or a scheduled visit — without adding operational overhead.
 
-The result is a fast, responsive website with a cinematic hero, a curated property experience, dedicated service and project hubs, rich property detail modals, validated inquiry and visit-request forms, and direct WhatsApp, phone, and email contact paths.
+The result is a fast, responsive website with a cinematic hero, a curated property experience, dedicated service and project hubs, rich property detail modals, a validated consultation form, pre-filled WhatsApp visit requests, and direct WhatsApp, phone, and email contact paths.
 
 ## 2. The Problem / Challenge
 
@@ -70,11 +70,11 @@ The real estate and construction practices each have a dedicated hub. Fourteen s
 
 ### A lead path built around real behavior
 
-The consultation form captures the details that actually qualify an inquiry: name, email, phone, service required, property or project type, budget range, preferred contact method, and project requirements. The property visit flow captures the listing, preferred date and time, number of visitors, and a message.
+The consultation form captures the details that actually qualify an inquiry: name, email, phone, service required, property or project type, budget range, preferred contact method, and project requirements.
 
-Both forms validate on the client with React Hook Form and Zod, then validate again on the server. Successful submissions trigger an email notification through EmailJS. If email is not configured, the site degrades gracefully instead of breaking the experience.
+The form validates on the client with React Hook Form and Zod. On submit, it builds a structured WhatsApp message with the visitor's details and opens WhatsApp ready to send — no email service or backend required.
 
-For visitors who prefer to talk first, every listing includes direct phone, email, and pre-filled WhatsApp links.
+For visitors who prefer to talk first, every listing includes direct phone, email, and pre-filled WhatsApp links, including a property-specific visit request.
 
 ### Fast, lean, and easy to maintain
 
@@ -96,7 +96,7 @@ There is no database, authentication layer, or dashboard to maintain — just a 
 - Agent contact details with phone, email, and WhatsApp.
 - Shareable property deep links.
 - Consultation form with service, project type, budget, and contact preference.
-- Property visit request form tied to a specific listing.
+- Pre-filled WhatsApp visit requests tied to a specific listing.
 - Real estate and construction service hubs with detailed service modals.
 - Construction project portfolio with challenge-and-solution case studies.
 - About page with mission, vision, values, and practice overview.
@@ -110,7 +110,7 @@ There is no database, authentication layer, or dashboard to maintain — just a 
 - A structured lead-capture path instead of unstructured chat messages.
 - Qualified inquiries with budget and contact preferences.
 - Viewing requests tied to the exact property.
-- Instant email notifications through EmailJS.
+- Inquiries delivered directly to WhatsApp with all qualifying details.
 - One typed content layer for listings, services, and projects.
 - Consistent listing fields across the entire catalogue.
 - Direct WhatsApp, phone, and email contact from every property.
@@ -150,8 +150,8 @@ Each listing uses a cover image plus a gallery, so the same photography system s
 | Motion | Framer Motion |
 | UI state | Zustand |
 | Forms | React Hook Form + Zod |
-| Backend | Next.js route handlers (`/api/contact`, `/api/visit`) |
-| Email | EmailJS |
+| Backend | Next.js App Router |
+| Lead delivery | WhatsApp (pre-filled message) |
 | Media | Next.js image optimization with AVIF and WebP |
 | Maps | OpenStreetMap embeds and Google Maps |
 | Icons | Lucide React |

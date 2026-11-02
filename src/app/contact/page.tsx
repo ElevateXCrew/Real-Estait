@@ -13,10 +13,12 @@ export const metadata: Metadata = {
     "Get in touch with TS Estate & Builders — request a consultation for property buying, selling, construction, or renovation. We respond within one business day.",
 };
 
-const MAPS_LINK =
-  "https://www.google.com/maps/search/TS%20Estate%20and%20Builders/@33.49112319946289,73.07272338867188,17z?hl=en";
-const MAPS_EMBED =
-  "https://maps.google.com/maps?q=33.49112319946289,73.07272338867188&z=17&hl=en&output=embed";
+const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  CONTACT_INFO.address
+)}`;
+const MAPS_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(
+  CONTACT_INFO.address
+)}&z=16&hl=en&output=embed`;
 
 const STEPS = [
   {

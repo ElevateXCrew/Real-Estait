@@ -101,9 +101,9 @@ export const CONTACT_INFO: ContactInfo = {
   company: "TS Estate & Builders",
   tagline:
     "Real estate, construction, architecture, and property development — under one trusted roof.",
-  phone: "+1 (415) 555-0142",
-  email: "hello@tsestatebuilders.com",
-  address: "210 Harbor View Avenue, Suite 1100, San Francisco, CA 94107",
+  phone: "0336 5229600",
+  email: "tsestatebuilders@gmail.com",
+  address: "9C Business Junction, Phase 8, Bahria Town, Rawalpindi, Pakistan",
   hours: "Monday – Saturday: 9:00 AM – 7:00 PM",
   social: [
     { label: "LinkedIn", href: "#", icon: "Linkedin" },
@@ -3681,7 +3681,7 @@ export const PROPERTIES: Property[] = [
     description: [
       "Farm house available for sale in Rawat, Islamabad.",
       "Best for a goat, cow, or other animals business — good location with one room and a washroom.",
-      "Note: we deal in agricultural land and have different sizes of plots for farm houses and investment. Our office is in DHA Phase 2 — feel free to call or visit for more details.",
+      "Note: we deal in agricultural land and have different sizes of plots for farm houses and investment. Our office is in Bahria Town Phase 8 — feel free to call or visit for more details.",
     ],
     interiorHighlights: [
       "1 room",
@@ -3780,7 +3780,7 @@ export const PROPERTIES: Property[] = [
       },
       {
         question: "Can I schedule a visit?",
-        answer: "Yes — contact us via WhatsApp or phone, or visit our DHA Phase 2 office.",
+        answer: "Yes — contact us via WhatsApp or phone, or visit our Bahria Town Phase 8 office.",
       },
     ],
     featured: true,

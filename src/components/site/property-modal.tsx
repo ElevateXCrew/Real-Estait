@@ -69,6 +69,10 @@ function PropertyModalInner({
     (p) => p.slug !== property.slug && p.category === property.category,
   ).slice(0, 3);
 
+  const waNumber = property.agent.phone
+    .replace(/[^0-9]/g, "")
+    .replace(/^0/, "92");
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -269,7 +273,7 @@ function PropertyModalInner({
 
                   <div className="mt-5 space-y-2.5">
                     <a
-                      href={`https://wa.me/${property.agent.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(`Hi, I'm interested in scheduling a visit for ${property.title}.`)}`}
+                      href={`https://wa.me/${waNumber}?text=${encodeURIComponent(`Hi, I'm interested in scheduling a visit for ${property.title}.`)}`}
                       target="_blank"
                       rel="noreferrer"
                       className="shine flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-navy text-sm font-bold text-white transition hover:bg-navy-700 hover:shadow-glow"
@@ -433,7 +437,7 @@ function PropertyModalInner({
                     Contact Agent
                   </a>
                   <a
-                    href={`https://wa.me/${property.agent.phone.replace(/[^0-9]/g, "")}`}
+                    href={`https://wa.me/${waNumber}`}
                     target="_blank"
                     rel="noreferrer"
                     className="shine shine-light flex h-10 items-center justify-center gap-2 rounded-lg border border-navy text-sm font-semibold text-navy hover:bg-navy hover:text-white"

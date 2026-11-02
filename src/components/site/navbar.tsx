@@ -13,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Container } from "./ui-helpers";
 import { useUIStore } from "@/lib/store";
+import { CONTACT_INFO } from "@/lib/data";
 import { DynamicIcon } from "../dynamic-icon";
 
 const NAV_LINKS = [
@@ -168,11 +169,11 @@ export function Navbar() {
           {/* CTA */}
           <div className="ml-auto hidden items-center gap-4 lg:flex">
             <a
-              href="tel:+14155550142"
+              href={`tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, "")}`}
               className="flex items-center gap-2 rounded-full border border-border bg-soft-blue/50 px-4 py-2 text-sm font-semibold text-navy-700 transition-all hover:border-accent-blue/50 hover:bg-soft-blue hover:text-accent-blue"
             >
               <Phone className="h-3.5 w-3.5 text-accent-blue" />
-              <span className="hidden xl:inline">(415) 555-0142</span>
+              <span className="hidden xl:inline">{CONTACT_INFO.phone}</span>
             </a>
             <button
               onClick={() => handleNavClick("#contact")}
@@ -306,11 +307,11 @@ export function Navbar() {
                   Get a Consultation
                 </button>
                 <a
-                  href="tel:+14155550142"
+                  href={`tel:${CONTACT_INFO.phone.replace(/[^+\d]/g, "")}`}
                   className="mt-3 flex items-center justify-center gap-2 text-sm font-semibold text-navy-700"
                 >
                   <Phone className="h-4 w-4 text-accent-blue" />
-                  (415) 555-0142
+                  {CONTACT_INFO.phone}
                 </a>
               </div>
             </motion.aside>
