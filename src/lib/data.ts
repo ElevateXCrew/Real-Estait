@@ -108,8 +108,7 @@ export const CONTACT_INFO: ContactInfo = {
   social: [
     { label: "LinkedIn", href: "#", icon: "Linkedin" },
     { label: "Instagram", href: "#", icon: "Instagram" },
-    { label: "Facebook", href: "#", icon: "Facebook" },
-    { label: "Twitter", href: "#", icon: "Twitter" },
+    { label: "Facebook", href: "https://www.facebook.com/tsestateandbuilders/", icon: "Facebook" },
   ],
 };
 
@@ -4186,8 +4185,8 @@ export const PROJECTS: Project[] = [
     location: "Financial District, San Francisco, CA",
     status: "In Progress",
     year: "2025",
-    cover: IMG.commercial[0],
-    gallery: [IMG.commercial[0], IMG.commercial[1], IMG.construction[1], IMG.interiors[5]],
+    cover: "/projects/Commercial.png",
+    gallery: ["/projects/Commercial.png", IMG.commercial[1], IMG.construction[1], IMG.interiors[5]],
     description:
       "A 14-story commercial tower with a glazed curtain wall, double-height lobby, and flexible floor plates designed for modern hybrid-work tenants.",
     scope: [
@@ -4242,8 +4241,8 @@ export const PROJECTS: Project[] = [
     location: "Riverside, San Francisco, CA",
     status: "In Progress",
     year: "2025",
-    cover: IMG.apartments[1],
-    gallery: [IMG.apartments[1], IMG.apartments[2], IMG.apartments[3], IMG.construction[2]],
+    cover: "/projects/residential.png",
+    gallery: ["/projects/residential.png", IMG.apartments[2], IMG.apartments[3], IMG.construction[2]],
     description:
       "A 48-unit residential development with a mix of one- and two-bedroom apartments, communal landscaped courtyards, and ground-floor retail.",
     scope: [
