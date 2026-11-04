@@ -3984,9 +3984,9 @@ export const PROPERTIES: Property[] = [
     yearBuilt: 2018,
     condition: "Well-Maintained",
     furnished: "Furnished",
-    cover: "/properties/u53.webp",
+    cover: "/projects/plat-3.png",
     gallery: [
-      "/properties/u53.webp",
+      "/projects/plat-3.png",
       "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/1c36221dd9ee.jpg",
       "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5c25196e654f.jpeg",
       "https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/58ef024e4dc1.jpg",
